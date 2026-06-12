@@ -10,18 +10,6 @@ QDD Codex 是 Codex plugin，用來實作 **Questionnaire-Driven Development（�
 
 當你希望 Codex 的工作可對齊、可續跑、可驗證，就適合使用 QDD Codex。
 
-## 語言
-
-- [English](../../README.md)
-- [繁體中文](README.zh-TW.md)
-- [简体中文](README.zh-CN.md)
-- [日本語](README.ja.md)
-- [한국어](README.ko.md)
-- [Español](README.es.md)
-- [Português (Brasil)](README.pt-BR.md)
-- [Deutsch](README.de.md)
-- [Français](README.fr.md)
-
 ## 想解決的問題
 
 很多功能開發在目標、取捨、驗證方式還沒清楚時就開始實作。結果是反覆修正、隱藏假設太多、下一次 Codex session 也很難接續上下文。

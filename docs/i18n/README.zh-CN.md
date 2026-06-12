@@ -10,18 +10,6 @@ questionnaire -> decisions -> phases -> implementation -> review/fix -> smoke te
 
 当你希望 Codex 的工作明确、可继续、可验证时，QDD Codex 很适合使用。
 
-## 语言
-
-- [English](../../README.md)
-- [繁體中文](README.zh-TW.md)
-- [简体中文](README.zh-CN.md)
-- [日本語](README.ja.md)
-- [한국어](README.ko.md)
-- [Español](README.es.md)
-- [Português (Brasil)](README.pt-BR.md)
-- [Deutsch](README.de.md)
-- [Français](README.fr.md)
-
 ## 想解决的问题
 
 功能开发经常在目标、取舍和验证方式还没清楚时就开始。结果是反复修改：agent 太早实现，用户需要修正隐藏假设，后续 session 也丢失上下文。

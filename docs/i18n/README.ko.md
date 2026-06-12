@@ -10,18 +10,6 @@ questionnaire -> decisions -> phases -> implementation -> review/fix -> smoke te
 
 Codex 작업을 명확하고, 이어서 진행하기 쉽고, 검증하기 쉽게 만들고 싶을 때 사용합니다.
 
-## Language
-
-- [English](../../README.md)
-- [繁體中文](README.zh-TW.md)
-- [简体中文](README.zh-CN.md)
-- [日本語](README.ja.md)
-- [한국어](README.ko.md)
-- [Español](README.es.md)
-- [Português (Brasil)](README.pt-BR.md)
-- [Deutsch](README.de.md)
-- [Français](README.fr.md)
-
 ## 해결하려는 문제
 
 기능 작업은 목표, tradeoffs, verification path가 분명해지기 전에 시작되는 경우가 많습니다. 그러면 agent가 너무 빨리 구현하고, 사용자는 숨은 가정을 수정해야 하며, 이후 session에서는 문맥을 잃기 쉽습니다.

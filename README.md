@@ -10,18 +10,6 @@ questionnaire -> decisions -> phases -> implementation -> review/fix -> smoke te
 
 Use it when you want Codex work to be explicit, resumable, and easy to verify.
 
-## Language
-
-- [English](README.md)
-- [繁體中文](docs/i18n/README.zh-TW.md)
-- [简体中文](docs/i18n/README.zh-CN.md)
-- [日本語](docs/i18n/README.ja.md)
-- [한국어](docs/i18n/README.ko.md)
-- [Español](docs/i18n/README.es.md)
-- [Português (Brasil)](docs/i18n/README.pt-BR.md)
-- [Deutsch](docs/i18n/README.de.md)
-- [Français](docs/i18n/README.fr.md)
-
 ## The Problem
 
 Feature work often starts before the goal, tradeoffs, and verification path are clear. That creates churn: the agent implements too early, the user has to correct hidden assumptions, and later sessions lose context.

@@ -10,18 +10,6 @@ questionnaire -> decisions -> phases -> implementation -> review/fix -> smoke te
 
 Use quando quiser que o trabalho do Codex seja explícito, retomável e fácil de verificar.
 
-## Language
-
-- [English](../../README.md)
-- [繁體中文](README.zh-TW.md)
-- [简体中文](README.zh-CN.md)
-- [日本語](README.ja.md)
-- [한국어](README.ko.md)
-- [Español](README.es.md)
-- [Português (Brasil)](README.pt-BR.md)
-- [Deutsch](README.de.md)
-- [Français](README.fr.md)
-
 ## O Problema
 
 Trabalho de feature muitas vezes começa antes de objetivo, tradeoffs e caminho de verificação estarem claros. Isso gera retrabalho: o agent implementa cedo demais, o usuário corrige suposições escondidas e sessions futuras perdem contexto.

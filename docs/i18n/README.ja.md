@@ -10,18 +10,6 @@ questionnaire -> decisions -> phases -> implementation -> review/fix -> smoke te
 
 Codex の作業を明確で、再開しやすく、検証しやすいものにしたいときに使います。
 
-## Language
-
-- [English](../../README.md)
-- [繁體中文](README.zh-TW.md)
-- [简体中文](README.zh-CN.md)
-- [日本語](README.ja.md)
-- [한국어](README.ko.md)
-- [Español](README.es.md)
-- [Português (Brasil)](README.pt-BR.md)
-- [Deutsch](README.de.md)
-- [Français](README.fr.md)
-
 ## 解決したい問題
 
 機能開発は、ゴール、トレードオフ、検証方法が明確になる前に始まりがちです。その結果、agent が早く実装しすぎたり、ユーザーが隠れた前提を修正したり、後続の session で文脈が失われたりします。
