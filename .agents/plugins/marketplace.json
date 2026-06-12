@@ -1,0 +1,20 @@
+{
+  "name": "qdd-codex-local",
+  "interface": {
+    "displayName": "QDD Codex Local"
+  },
+  "plugins": [
+    {
+      "name": "qdd-codex",
+      "source": {
+        "source": "local",
+        "path": "."
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
