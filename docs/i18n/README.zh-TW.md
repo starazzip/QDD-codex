@@ -1,6 +1,6 @@
 # QDD Codex
 
-[English](../../README.md) | [繁體中文](README.zh-TW.md)
+[English](../../README.md) | [繁體中文](README.zh-TW.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 QDD Codex 是 Codex plugin，用來實作 **Questionnaire-Driven Development（問卷驅動開發）**。它幫你避免從模糊需求直接跳進寫 code，而是把每個需求整理成輕量流程：
 
@@ -9,6 +9,18 @@ QDD Codex 是 Codex plugin，用來實作 **Questionnaire-Driven Development（�
 ```
 
 當你希望 Codex 的工作可對齊、可續跑、可驗證，就適合使用 QDD Codex。
+
+## 語言
+
+- [English](../../README.md)
+- [繁體中文](README.zh-TW.md)
+- [简体中文](README.zh-CN.md)
+- [日本語](README.ja.md)
+- [한국어](README.ko.md)
+- [Español](README.es.md)
+- [Português (Brasil)](README.pt-BR.md)
+- [Deutsch](README.de.md)
+- [Français](README.fr.md)
 
 ## 想解決的問題
 
@@ -91,32 +103,39 @@ Review 和 fix 是獨立指令，讓實作、獨立評估、針對性修復成�
 ## 範例
 
 ```text
-/qdd Add GitHub-visible Traditional Chinese README support
+/qdd Add team invitation emails with role selection and expiration
 ```
 
-Codex 會建立本機 plan folder 和 questionnaire。填完或接受預設後：
+Codex 會建立本機 plan folder 和 questionnaire，用來釐清誰可以邀請團隊成員、有哪些角色、邀請多久後失效、email 內容需要包含什麼、失敗時該怎麼處理。
+
+填完問卷或接受推薦預設後：
 
 ```text
 /qdd-whereami
 /qdd-align
 ```
 
-確認 `decisions.md` 符合需求後：
+檢查 `decisions.md`，確認預期行為與不做的事都符合需求。確認後：
 
 ```text
 /qdd-plan
 ```
 
-閱讀產生的 phases，然後執行：
+閱讀產生的 phases，接著先一次執行一個 phase：
 
 ```text
 /qdd-phase 1
 /qdd-review 1
 /qdd-phase-fix 1
+```
+
+前面的 phases 沒問題後，再完成剩下已確認的 phases：
+
+```text
 /qdd-phase all
 ```
 
-需要使用者驗收步驟時：
+交付前建立使用者可執行的驗收步驟：
 
 ```text
 /qdd-smoke current plan

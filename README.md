@@ -1,6 +1,6 @@
 # QDD Codex
 
-[English](README.md) | [繁體中文](docs/i18n/README.zh-TW.md)
+[English](README.md) | [繁體中文](docs/i18n/README.zh-TW.md) | [简体中文](docs/i18n/README.zh-CN.md) | [日本語](docs/i18n/README.ja.md) | [한국어](docs/i18n/README.ko.md) | [Español](docs/i18n/README.es.md) | [Português (Brasil)](docs/i18n/README.pt-BR.md) | [Deutsch](docs/i18n/README.de.md) | [Français](docs/i18n/README.fr.md)
 
 QDD Codex is a Codex plugin for **Questionnaire-Driven Development**. It helps you stop jumping from a vague feature idea straight into code by turning each request into a lightweight loop:
 
@@ -9,6 +9,18 @@ questionnaire -> decisions -> phases -> implementation -> review/fix -> smoke te
 ```
 
 Use it when you want Codex work to be explicit, resumable, and easy to verify.
+
+## Language
+
+- [English](README.md)
+- [繁體中文](docs/i18n/README.zh-TW.md)
+- [简体中文](docs/i18n/README.zh-CN.md)
+- [日本語](docs/i18n/README.ja.md)
+- [한국어](docs/i18n/README.ko.md)
+- [Español](docs/i18n/README.es.md)
+- [Português (Brasil)](docs/i18n/README.pt-BR.md)
+- [Deutsch](docs/i18n/README.de.md)
+- [Français](docs/i18n/README.fr.md)
 
 ## The Problem
 
@@ -91,32 +103,39 @@ Review and fix are separate commands to keep implementation, independent assessm
 ## Example
 
 ```text
-/qdd Add GitHub-visible Traditional Chinese README support
+/qdd Add team invitation emails with role selection and expiration
 ```
 
-Codex creates a local plan folder and questionnaire. After answering or accepting defaults:
+Codex creates a local plan folder and a questionnaire that clarifies who can invite teammates, which roles are available, how long invitations stay valid, what email content is required, and how failures should be handled.
+
+After answering the questionnaire or accepting the recommended defaults:
 
 ```text
 /qdd-whereami
 /qdd-align
 ```
 
-Review `decisions.md`. When it matches your intent:
+Review `decisions.md` to confirm the expected behavior and non-goals. When it matches your intent:
 
 ```text
 /qdd-plan
 ```
 
-Read the generated phases, then run:
+Read the generated phases, then implement one phase at a time:
 
 ```text
 /qdd-phase 1
 /qdd-review 1
 /qdd-phase-fix 1
+```
+
+When the early phases look good, finish the remaining approved phases:
+
+```text
 /qdd-phase all
 ```
 
-Finish with user-facing verification steps when needed:
+Create user-facing verification steps before handoff:
 
 ```text
 /qdd-smoke current plan
