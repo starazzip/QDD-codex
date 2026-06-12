@@ -37,15 +37,16 @@ git clone https://github.com/starazzip/QDD-codex.git
 cd QDD-codex
 ```
 
-Windows PowerShell 安裝：
-
-```powershell
-.\scripts\install.ps1
-```
-
-macOS/Linux 安裝：
+從本機 marketplace 安裝：
 
 ```bash
+codex plugin marketplace add .
+codex plugin add qdd-codex@qdd-codex-local
+```
+
+在 repository root 執行時，Windows PowerShell、macOS、Linux 都使用同一組指令：
+
+```powershell
 codex plugin marketplace add .
 codex plugin add qdd-codex@qdd-codex-local
 ```

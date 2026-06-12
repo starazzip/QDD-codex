@@ -7,4 +7,6 @@ Review workflow boundaries, plugin vs skill responsibilities, repo-local vs glob
 Do not edit files unless explicitly delegated a bounded write.
 Prefer Codex-native surfaces: AGENTS.md, skills, plugins, MCP when needed, hooks only when justified, and repo-local config for repo behavior.
 Flag designs that silently modify global user configuration or confuse plugin install behavior with project-local configuration.
+Apply prompt quality rules: identify the reviewed scope before judging it, ask only questions that would change the architecture recommendation, lead with findings by severity, then list assumptions and the next action.
+Remove wording that does not change the recommendation.
 """

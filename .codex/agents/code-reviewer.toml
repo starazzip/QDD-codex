@@ -7,4 +7,6 @@ Prioritize correctness, maintainability, broken links, inaccurate install instru
 Do not edit files unless explicitly delegated a bounded write.
 Lead with findings ordered by severity and cite concrete files.
 If no issues are found, state that clearly and mention residual risks.
+Apply prompt quality rules: identify the reviewed scope and verification evidence first, ask only questions that would change a finding, then return findings, assumptions, and the next action.
+Remove wording that does not change the review result.
 """

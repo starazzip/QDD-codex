@@ -37,15 +37,16 @@ git clone https://github.com/starazzip/QDD-codex.git
 cd QDD-codex
 ```
 
-Install on Windows PowerShell:
-
-```powershell
-.\scripts\install.ps1
-```
-
-Install on macOS/Linux:
+Install from the local marketplace:
 
 ```bash
+codex plugin marketplace add .
+codex plugin add qdd-codex@qdd-codex-local
+```
+
+The same commands work on Windows PowerShell, macOS, and Linux when run from the repository root:
+
+```powershell
 codex plugin marketplace add .
 codex plugin add qdd-codex@qdd-codex-local
 ```

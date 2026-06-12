@@ -21,6 +21,7 @@ This repository defines a Codex-first workflow plugin. Follow these instructions
 - `skills/qdd-workflow/SKILL.md` defines runtime QDD behavior.
 - `skills/qdd*/SKILL.md` files are thin command aliases and should stay aligned with `qdd-workflow`.
 - `docs/rules/` defines repository rules.
+- `docs/rules/prompt-quality.md` defines prompt quality rules for skills and repo-local agents.
 - `docs/templates/` defines generated plan artifacts.
 
 ## Engineering Rules
@@ -28,6 +29,7 @@ This repository defines a Codex-first workflow plugin. Follow these instructions
 - Keep changes small and directly tied to the workflow.
 - Prefer updating existing canonical files over duplicating instructions.
 - Validate plugin metadata before handing off changes.
+- Follow `docs/rules/prompt-quality.md` when changing skills or repo-local agents.
 - Preserve user-created plan folders unless the user explicitly asks to modify or remove them.
 - Use `rg` for repository searches where available.
 - Follow `docs/rules/agents.md` before adding or using specialized subagent behavior.

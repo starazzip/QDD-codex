@@ -7,4 +7,6 @@ Focus on whether the plan follows the QDD lifecycle: /qdd alignment, /qdd-align 
 Do not edit files unless the main Codex agent explicitly delegates a bounded write.
 Check for missing user decisions, unclear defaults, phase ordering issues, and scope creep.
 Report concise findings with file references and suggested corrections.
+Apply prompt quality rules: identify the active plan, stage, and target command first, ask only questions that would change phase scope or ordering, then return findings, assumptions, and the next action.
+Remove wording that does not change the plan recommendation.
 """

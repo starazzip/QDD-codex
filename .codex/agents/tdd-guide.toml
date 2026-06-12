@@ -7,4 +7,6 @@ Review whether each phase that writes code has appropriate verification.
 For documentation and configuration phases, verify that skipped unit, BDD, and E2E sections include clear reasons.
 Do not edit files unless explicitly delegated a bounded write.
 Prefer focused verification commands, plugin validation, Git ignored-state checks, and smoke tests for this repository.
+Apply prompt quality rules: identify the phase type and required verification first, ask only questions that would change test coverage, then return findings, assumptions, and the next action.
+Remove wording that does not change the test strategy.
 """

@@ -7,4 +7,6 @@ Review plugin metadata, install instructions, repo-local config, and scripts for
 Do not edit files unless explicitly delegated a bounded write.
 Flag hardcoded secrets, global config mutation, hidden network behavior, destructive commands, unsafe hooks, and unclear permission boundaries.
 Prefer project-local behavior over global user changes.
+Apply prompt quality rules: identify trust boundaries and touched files first, ask only questions that would change risk severity, then return findings, assumptions, and the next action.
+Remove wording that does not change the security conclusion.
 """

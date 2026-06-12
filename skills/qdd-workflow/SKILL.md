@@ -21,12 +21,17 @@ Use Codex-native surfaces only: repository files, `AGENTS.md`, skills, plugins, 
 
 ## Shared Rules
 
+- Follow `docs/rules/prompt-quality.md` when generating, updating, reviewing, or fixing QDD workflow artifacts.
+- Before acting, identify the command, active plan, target phase, source files, expected output, and next action.
+- Ask clarification questions only when the answer would change execution, scope, or safety.
+- Do not impose a fixed maximum number of questionnaire or clarification questions; use the number needed to align the work.
+- Keep command responses concise and include concrete file paths, verification results, blockers, and the next command when relevant.
 - Store active plans under `plans/<feature-slug>/`.
 - Store completed plans under `plans/done/<feature-slug>/`.
 - Maintain `status.md` inside each active plan using `docs/templates/status.md` as the shape.
 - Maintain `plans/current.md` when useful to point at the active plan.
 - Use a short lowercase kebab-case slug derived from the feature description.
-- If several active plans exist and the command does not name one, select the most recently modified active plan. If that is ambiguous, ask one concise question.
+- If several active plans exist and the command does not name one, select the most recently modified active plan. If that is still ambiguous, ask only the blocking question needed to choose the plan.
 - Keep generated plan content readable by non-specialists.
 - Use English for canonical workflow files unless the user asks for Traditional Chinese output in a plan.
 - Use the user's preferred language for plan artifacts that require user reading or confirmation, including `questionnaire.md`, `decisions.md`, and `smoke.md`.
