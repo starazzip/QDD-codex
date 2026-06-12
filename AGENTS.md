@@ -36,8 +36,10 @@ This repository defines a Codex-first workflow plugin. Follow these instructions
 
 - `/qdd` must generate only alignment artifacts, not implementation plans.
 - Questionnaires must use plain language, multiple-choice options, exactly one `Other` option per question, and a recommended default.
+- Plan artifacts that require user reading or confirmation, especially `questionnaire.md`, `decisions.md`, and `smoke.md`, must use the user's preferred language.
 - Unanswered questionnaire items use their recommended defaults.
 - `/qdd-align` must write confirmed decisions before adding new questions.
 - `/qdd-plan` must wait for user confirmation that `decisions.md` is aligned.
 - Any phase that writes code must include verification. Unit tests, BDD, and E2E are optional only when they are not useful for that phase.
 - `/qdd-phase-all` must use a goal to track completion and move finished plans to `plans/done/`.
+- Keep `plans/` ignored by Git. Plans are local workflow state unless the user explicitly changes that policy.

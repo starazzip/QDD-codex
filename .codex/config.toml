@@ -1,0 +1,40 @@
+persistent_instructions = "Follow this repository's AGENTS.md. Keep QDD workflow source files English-first, but write user-confirmed plan artifacts in the user's preferred language."
+
+[features]
+multi_agent = true
+
+[agents]
+max_threads = 6
+max_depth = 1
+
+[agents.planner]
+description = "Read-oriented QDD planner for alignment, decisions, phase decomposition, and scope risks."
+config_file = "agents/planner.toml"
+
+[agents.architect]
+description = "Read-oriented architecture reviewer for boundaries, tradeoffs, and Codex workflow design."
+config_file = "agents/architect.toml"
+
+[agents.tdd-guide]
+description = "Read-oriented test strategy reviewer for unit, BDD, E2E, and skipped-test rationale."
+config_file = "agents/tdd-guide.toml"
+
+[agents.code-reviewer]
+description = "Read-oriented code and docs reviewer focused on correctness, maintainability, regressions, and missing verification."
+config_file = "agents/code-reviewer.toml"
+
+[agents.security-reviewer]
+description = "Read-oriented security reviewer for secrets, permissions, trust boundaries, and config safety."
+config_file = "agents/security-reviewer.toml"
+
+[agents.build-error-resolver]
+description = "Read-oriented build and validation failure diagnostician."
+config_file = "agents/build-error-resolver.toml"
+
+[agents.e2e-runner]
+description = "Read-oriented smoke and end-to-end verification planner."
+config_file = "agents/e2e-runner.toml"
+
+[agents.refactor-cleaner]
+description = "Read-oriented cleanup reviewer for duplication, drift, and unnecessary complexity."
+config_file = "agents/refactor-cleaner.toml"

@@ -24,6 +24,7 @@ Use Codex-native surfaces only: repository files, `AGENTS.md`, skills, plugins, 
 - If several active plans exist and the command does not name one, select the most recently modified active plan. If that is ambiguous, ask one concise question.
 - Keep generated plan content readable by non-specialists.
 - Use English for canonical workflow files unless the user asks for Traditional Chinese output in a plan.
+- Use the user's preferred language for plan artifacts that require user reading or confirmation, including `questionnaire.md`, `decisions.md`, and `smoke.md`.
 - Support Traditional Chinese translations under `translations/zh-TW/`, but do not rely on translated files as the source of truth.
 - Before editing an existing plan file, read it first and preserve user-authored answers.
 
@@ -91,6 +92,8 @@ Create or update `decisions.md` with:
 - Out-of-scope items.
 - Open questions.
 
+Write `decisions.md` in the user's preferred language. If the user normally writes in Traditional Chinese, use Traditional Chinese.
+
 If more information is needed:
 
 - Append a `Follow-up Questions` section to the original `questionnaire.md`.
@@ -110,15 +113,23 @@ Create `plans/<slug>/phases/` and write `phase-XX.md` files.
 
 Each phase must include:
 
+- Status.
 - Objective.
 - Inputs.
 - Scope.
 - Out of scope.
-- Steps.
+- Plan.
+- BDD.
+- TDD.
+- Implement.
+- E2E.
+- Review.
+- Fix.
+- Wrap up.
 - Verification.
 - Done criteria.
 
-Use the repository's available phase skill guidance when present. If a phase writes code, it must include verification. Unit tests, BDD, and E2E tests may be marked not applicable only with a reason.
+Use the repository's available phase skill guidance when present. Reflect the phase cadence `Plan -> BDD -> TDD -> Implement -> E2E -> Review -> Fix -> Wrap up`, but do not copy another skill's full instructions into generated phase files. If a phase writes code, it must include verification. Unit tests, BDD, and E2E tests may be marked not applicable only with a reason.
 
 After writing phases, tell the user to read every phase before running `/qdd-phase` or `/qdd-phase-all`.
 
