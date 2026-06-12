@@ -1,7 +1,7 @@
 {
   "name": "qdd-codex",
   "version": "0.1.0",
-  "description": "Question-driven development workflow for Codex projects.",
+  "description": "Questionnaire-driven development workflow for Codex projects.",
   "author": {
     "name": "starazzip"
   },
@@ -13,15 +13,15 @@
   "interface": {
     "displayName": "QDD Codex",
     "shortDescription": "Plan Codex work through questionnaires, decisions, and phases.",
-    "longDescription": "QDD Codex provides a question-driven development workflow for Codex. It turns /qdd prompts into aligned plan folders, decision records, phase files, implementation runs, and smoke-test instructions.",
+    "longDescription": "QDD Codex provides a questionnaire-driven development workflow for Codex. It turns /qdd prompts into aligned plan folders, decision records, phase files, implementation runs, reviews, fixes, and smoke-test instructions.",
     "developerName": "starazzip",
     "websiteURL": "https://github.com/starazzip/QDD-codex",
     "category": "Productivity",
     "capabilities": ["Planning", "Write"],
     "defaultPrompt": [
+      "/qdd-whereami",
       "/qdd Add a new feature",
-      "/qdd-align",
-      "/qdd-smoke current plan"
+      "/qdd-phase all"
     ]
   }
 }

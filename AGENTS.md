@@ -41,5 +41,5 @@ This repository defines a Codex-first workflow plugin. Follow these instructions
 - `/qdd-align` must write confirmed decisions before adding new questions.
 - `/qdd-plan` must wait for user confirmation that `decisions.md` is aligned.
 - Any phase that writes code must include verification. Unit tests, BDD, and E2E are optional only when they are not useful for that phase.
-- `/qdd-phase-all` must use a goal to track completion and move finished plans to `plans/done/`.
+- `/qdd-phase all` must use a goal to track completion and move finished plans to `plans/done/`.
 - Keep `plans/` ignored by Git. Plans are local workflow state unless the user explicitly changes that policy.

@@ -2,56 +2,124 @@
 
 [English](../../README.md) | [繁體中文](README.zh-TW.md)
 
-QDD Codex 是 Codex-first 的問卷驅動開發流程。它會把簡短功能描述轉成計畫資料夾，先用問卷對齊需求，再整理決策、切分 phase、執行實作，最後產生冒煙測試步驟。
-
-英文版 `README.md` 是 canonical 來源。這份繁體中文 README 是 GitHub 可見的使用者文件；完整本機翻譯工作區可以放在 `translations/zh-TW/`，且不進版控。
-
-## 指令
-
-安裝或啟用 plugin skill 後，可以使用：
+QDD Codex 是 Codex plugin，用來實作 **Questionnaire-Driven Development（問卷驅動開發）**。它幫你避免從模糊需求直接跳進寫 code，而是把每個需求整理成輕量流程：
 
 ```text
-/qdd {功能描述}
-/qdd-align
-/qdd-plan
-/qdd-phase {1~X}
-/qdd-phase-all
-/qdd-smoke {計畫或 phase}
+問卷 -> 決策 -> phases -> 實作 -> review/fix -> 冒煙測試
 ```
 
-Codex CLI 有內建 slash commands，而可重複使用的自訂工作流最穩定的做法是透過 skills/plugins。QDD 會把這些 slash-style prompt 當成 skill trigger。如果目前使用的 Codex 介面沒有直接路由自訂 slash 文字，請用 `/skills` 或 `$qdd-workflow` 明確選取 skill，再貼上相同指令文字。
+當你希望 Codex 的工作可對齊、可續跑、可驗證，就適合使用 QDD Codex。
 
-## 快速安裝
+## 想解決的問題
 
-從此 repo 本機安裝：
+很多功能開發在目標、取捨、驗證方式還沒清楚時就開始實作。結果是反覆修正、隱藏假設太多、下一次 Codex session 也很難接續上下文。
 
-```powershell
-.\scripts\install.ps1
-```
+QDD Codex 會把這些上下文保存在本機 plan files 裡。它會先問清楚問題、整理決策、切分 phases，並把冒煙測試步驟放在計畫旁邊。
+
+## 適合使用
+
+- 你有功能想法，但 scope 還不清楚。
+- 你希望 Codex 在規劃實作前先問對齊問題。
+- 你需要可以在後續 Codex session 接著做的 phase files。
+- 你希望 review、fix、smoke test 都是明確步驟。
+
+## 不適合使用
+
+- 你只需要非常小的一行修改。
+- 你已經有完整 issue、spec 和 task breakdown。
+
+## 快速開始
 
 從全新 checkout 安裝：
 
-```powershell
+```bash
 git clone https://github.com/starazzip/QDD-codex.git
 cd QDD-codex
+```
+
+Windows PowerShell 安裝：
+
+```powershell
 .\scripts\install.ps1
 ```
 
-也可以手動執行：
+macOS/Linux 安裝：
 
-```powershell
+```bash
 codex plugin marketplace add .
 codex plugin add qdd-codex@qdd-codex-local
 ```
 
-如果你的 Codex 顯示不同 marketplace 名稱，請先查詢再安裝：
+如果你的 Codex 顯示不同 marketplace 名稱：
 
-```powershell
+```bash
 codex plugin marketplace list
 codex plugin add qdd-codex@<marketplace-name>
 ```
 
 安裝後請重新啟動 Codex 或開新 thread，讓 skill 清單刷新。
+
+## 指令參考
+
+| 指令 | 使用時機 | 輸入 | 輸出 |
+| --- | --- | --- | --- |
+| `/qdd-whereami` | 查看目前 QDD 進度。 | 目前工作區的 plans。 | active plan、狀態階段、目前 phase、最近動作、下一步、阻塞事項、重要檔案。 |
+| `/qdd {description}` | 開始新功能計畫。 | 簡短功能描述。 | `plans/<slug>/README.md`、`AGENTS.md`、`questionnaire.md`。 |
+| `/qdd-align` | 問卷已填寫，或接受推薦預設。 | 目前計畫的 `questionnaire.md`。 | `decisions.md`，必要時追加 follow-up questions。 |
+| `/qdd-plan` | `decisions.md` 已確認。 | 計畫目標與決策內容。 | `phases/phase-XX.md`。 |
+| `/qdd-phase {N}` | 執行單一 phase。 | 一個 phase 編號。 | 限定範圍的變更、驗證結果、phase 狀態更新。 |
+| `/qdd-phase all` | 完成目前計畫下所有 phases。 | 已產生 phases 的目前計畫。 | 依序執行所有 phases，需要時 review/fix，最後關閉 plan。 |
+| `/qdd-review {N\|all}` | review 已完成實作的 phase，但不修。 | 一個 phase 或 `all`。 | 正確性、安全性、可維護性、缺少測試、文件漂移等 findings。 |
+| `/qdd-phase-fix {N\|all}` | 修 review findings 或驗證失敗。 | 一個 phase 或 `all`，加上 findings 或失敗輸出。 | 針對性修復、重新驗證、phase 狀態更新。 |
+| `/qdd-smoke {target}` | 建立手動驗證步驟。 | plan 或 phase target。 | 使用者可執行的 `smoke.md`。 |
+
+## Phase 閉環
+
+`/qdd-phase` 會刻意保持較小：
+
+1. 讀取 plan context。
+2. 規劃本 phase 步驟與風險。
+3. 需要時補 BDD scenarios；不需要時寫原因。
+4. 需要時補 tests；不需要時寫原因。
+5. 只實作指定 phase scope。
+6. 執行相關驗證。
+7. 更新 phase 狀態與 smoke-test notes。
+
+Review 和 fix 是獨立指令，讓實作、獨立評估、針對性修復成為清楚分離的檢查點。
+
+## 範例
+
+```text
+/qdd Add GitHub-visible Traditional Chinese README support
+```
+
+Codex 會建立本機 plan folder 和 questionnaire。填完或接受預設後：
+
+```text
+/qdd-whereami
+/qdd-align
+```
+
+確認 `decisions.md` 符合需求後：
+
+```text
+/qdd-plan
+```
+
+閱讀產生的 phases，然後執行：
+
+```text
+/qdd-phase 1
+/qdd-review 1
+/qdd-phase-fix 1
+/qdd-phase all
+```
+
+需要使用者驗收步驟時：
+
+```text
+/qdd-smoke current plan
+```
 
 ## 專案結構
 
@@ -59,40 +127,9 @@ codex plugin add qdd-codex@<marketplace-name>
 .codex-plugin/plugin.json        Plugin manifest.
 .codex/config.toml               repo-local Codex agent 註冊。
 .codex/agents/*.toml             維護本 repo 用的 read-oriented agent roles。
-skills/qdd-workflow/SKILL.md     Canonical QDD workflow behavior.
-skills/qdd*/SKILL.md             Slash-style command aliases.
-docs/rules/                      Codex best-practice rules.
-docs/templates/                  Workflow templates.
-docs/CODEX_BEST_PRACTICES.md     Codex 使用準則。
+skills/qdd-workflow/SKILL.md     canonical QDD workflow。
+skills/qdd*/SKILL.md             slash-style 指令別名。
+docs/rules/                      Codex workflow rules。
+docs/templates/                  generated plan templates。
 docs/i18n/                       進版控的使用者翻譯文件。
-translations/zh-TW/              本機完整繁中翻譯工作區，不進版控。
 ```
-
-## Git 遠端
-
-canonical repository：
-
-```text
-https://github.com/starazzip/QDD-codex.git
-```
-
-## 工作流程
-
-1. `/qdd {描述}` 建立 `plans/<slug>/`，只產生 `README.md`、`AGENTS.md`、`questionnaire.md`。
-2. `/qdd-align` 讀取問卷，整理 `decisions.md`，必要時追加問題。
-3. `/qdd-plan` 在使用者確認 `decisions.md` 後建立 `plans/<slug>/phases/phase-XX.md`。
-4. `/qdd-phase {1~X}` 執行指定 phase。
-5. `/qdd-phase-all` 使用 goal 追蹤所有 phase，完成後移到 `plans/done/<slug>/`。
-6. `/qdd-smoke {target}` 產生詳細冒煙測試步驟。
-
-`plans/` 是本機 workflow 狀態，會被 Git 忽略。
-
-## 設計規則
-
-- 這個專案只面向 Codex 生態系。
-- 英文 workflow、skills、agents、rules、templates 是 canonical。
-- 需要 GitHub 可見的繁中使用者文件時，放在 `docs/i18n/`。
-- 完整本機翻譯工作區放在 `translations/zh-TW/`，不進版控。
-- 使用 `AGENTS.md` 放 repo 持久規範，使用 skills 放可重複工作流，使用 plugins 做安裝散發。
-- 主 Codex agent 預設仍是 implementer/integrator；repo-local `.codex/agents/*.toml` 角色預設 read-oriented，用於 planning、review、security、build failures、E2E、cleanup 等檢查點。
-- 不建立 Claude 專用檔案、hooks、commands 或 runtime configuration。
